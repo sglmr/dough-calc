@@ -5,46 +5,117 @@
 
 <body>
     <form>
-        <label>Dough Balls:</label>
-        <input type="number" min=0 value=1 step=1 id="balls" oninput="calc_it()">
-        <br>
-        <label>Dough Weight:</label>
-        <input type="number" min=1 value=950 step=1 id="dough_weight" oninput="calc_it()">
-        <br>
-        <label>Flour 1 %</label>
-        <input type="number" id="flour_1" value=980 step=1 oninput="calc_it()">
-        <br>
-        <label>Water %</label>
-        <input type="number" min=25 value=75 step=.1 id="water" oninput="calc_it()">
-        <br>
-        <label>Salt %</label>
-        <input type="number" min=0 value=2.0 step=0.1 id="salt" oninput="calc_it()">
-        <br>
-        <label>Yeast %</label>
-        <input type="number" min=0 value=.9 step=0.01 id="yeast" oninput="calc_it()">
-        <br>
-        <label>Oil %</label>
-        <input type="number" min=0 value=0 step=.1 id="oil" oninput="calc_it()">
-        <br>
-        <label>Sugar %</label>
-        <input type="number" min=0 value=0 step=.1 id="sugar" oninput="calc_it()">
+        <table>
+            <tr>
+                <th>
+                    <h2>Ingredient</h2>
+                </th>
+                <th>
+                    <h2>Baking Percents</h2>
+                </th>
+                <th>
+                    <h2>Weights</h2>
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    <label>Dough Balls:</label>
+                </td>
+                <td>
+                    <input type="number" min=0 value=1 step=1 id="balls" oninput="calc_it()">
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Dough Weight:</label>
+                </td>
+                <td>
+                    <input type="number" min=1 value=950 step=1 id="dough_weight" oninput="calc_it()">
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Flour 1 %</label>
+                </td>
+                <td>
+                    <input type="number" id="flour_1" min=100 max=100 value=100 step=1 oninput="calc_it()">
+                </td>
+                <td>
+                    <label id="flour_1_wt"></label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Water %</label>
+                </td>
+                <td>
+                    <input type="number" min=25 value=75 step=.1 id="water" oninput="calc_it()">
+                </td>
+                <td>
+                    <label id="water_wt"></label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Salt %</label>
+                </td>
+                <td>
+                    <input type="number" min=0 value=2.0 step=0.1 id="salt" oninput="calc_it()">
+                </td>
+                <td>
+                    <label id="salt_wt"></label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Yeast %</label>
+                </td>
+                <td>
+                    <input type="number" min=0 value=.9 step=0.01 id="yeast" oninput="calc_it()">
+                </td>
+                <td>
+                    <label id="yeast_wt"></label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Oil %</label>
+                </td>
+                <td>
+                    <input type="number" min=0 value=0 step=.1 id="oil" oninput="calc_it()">
+                </td>
+                <td>
+                    <label id="oil_wt"></label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Sugar %</label>
+                </td>
+                <td>
+                    <input type="number" min=0 value=0 step=.1 id="sugar" oninput="calc_it()">
+                </td>
+                <td>
+                    <label id="sugar_wt"></label>
+                </td>
+            </tr>
+        </table>
     </form>
-
-    <h2>Weights</h2>
-    <div id="flour_1_wt">test</div>
 </body>
 
 <footer>
     <script>
         function calc_it() {
-            var balls = document.getElementById('balls').value
-            var dough_weight = document.getElementById('dough_weight').value
-            var flour_1 = document.getElementById('flour_1').value
-            var water = document.getElementById('water').value
-            var salt = document.getElementById('salt').value
-            var yeast = document.getElementById('yeast').value
-            var oil = document.getElementById('oil').value
-            var sugar = document.getElementById('sugar').value
+            var balls = parseFloat(document.getElementById('balls').value)
+            var dough_weight = parseFloat(document.getElementById('dough_weight').value)
+            var flour_1 = parseFloat(document.getElementById('flour_1').value)
+            var water = parseFloat(document.getElementById('water').value)
+            var salt = parseFloat(document.getElementById('salt').value)
+            var yeast = parseFloat(document.getElementById('yeast').value)
+            var oil = parseFloat(document.getElementById('oil').value)
+            var sugar = parseFloat(document.getElementById('sugar').value)
 
 
             // Calculate totals
@@ -52,13 +123,15 @@
             var total_percent = flour_1 + water + salt + yeast + oil + sugar
 
             // Calculate ingredient weights
-
-            /* TODO: Figure out calculations and output
-            */
-
-            document.getElementById('flour_1_wt').innerHTML = total_dough
-
+            var r = total_dough / total_percent
+            document.getElementById('flour_1_wt').innerHTML = (flour_1 * r).toLocaleString("en-US", { minimumFractionDigits: 1, maximumFractionDigits: 1 })
+            document.getElementById('water_wt').innerHTML = (water * r).toLocaleString("en-US", { minimumFractionDigits: 1, maximumFractionDigits: 1 })
+            document.getElementById('salt_wt').innerHTML = (salt * r).toLocaleString("en-US", { minimumFractionDigits: 1, maximumFractionDigits: 1 })
+            document.getElementById('yeast_wt').innerHTML = (yeast * r).toLocaleString("en-US", { minimumFractionDigits: 1, maximumFractionDigits: 1 })
+            document.getElementById('oil_wt').innerHTML = (oil * r).toLocaleString("en-US", { minimumFractionDigits: 1, maximumFractionDigits: 1 })
+            document.getElementById('sugar_wt').innerHTML = (sugar * r).toLocaleString("en-US", { minimumFractionDigits: 1, maximumFractionDigits: 1 })
         }
+        calc_it()
     </script>
 </footer>
 
