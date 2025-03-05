@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+
+  <title>Dough Calculator</title>
+  <meta name="description" content="A simple baker's percentage dough calculator.">
+
+  <!-- Pico.css -->
+  <link rel="stylesheet" href="/pico.orange.css">
+  <link rel="stylesheet" href="/print.css">
+</head>
+
+<body style="max-width: 70ch; margin: auto; transform: scale(0.75); transform-origin: top left;">
+  <!-- Header -->
+  <header>
+    <hgroup>
+      <h1>Dough Calculator</h1>
+      <p>A simple HTML & Javascript baker's percentage dough calculator.</p>
+    </hgroup>
+    <nav>
+      <ul>
+        <li><a href="/index.html">Basic</a></li>
+        <li><a href="/advanced.html">Advanced</a></li>
+      </ul>
+    </nav>
+  </header>
+  <!-- ./ Header -->
+
+  <!-- Main -->
+  <main>
+    <!-- Calculator Form -->
+    <article>
+      <h1>Dough calculator</h1>
+      <h3>Dough Quantity</h3>
+      <fieldset>
+          <div>
+              <label>Dough Balls: </label>
+              <input type="number" min=0 value=1 step=1 id="dough-ball-count">
+          </div>
+  
+          <div>
+              <label>Dough Ball Weight: </label>
+              <input type="number" min=1 value=950 step=1 id="dough-ball-weight">
+          </div>
+  
+          <div>
+              <label>Dough Hydration: </label>
+              <input type="number" min=1 value=70 step=1 id="dough-hydration-percent">
+          </div>
+  
+          <div>
+              <label>Use Preferment: </label>
+              <input type="checkbox" id="use-preferment-tf" checked>
+          </div>
+      </fieldset>
+      <div id="preferment-section">
+          <h3>Preferment</h3>
+          <fieldset>
+              <div>
+                  <label>Percent of Fermented Flour: </label>
+                  <input type="number" id="prefermented-flour-percent" min=0 max=100 value=15>
+              </div>
+  
+              <div>
+                  <label>Preferment Hydration: </label>
+                  <input type="number" id="preferment-hydration" min=0 max=200 value=100>
+              </div>
+          </fieldset>
+      </div>
+      <h3>Ingredients</h3>
+      <div>
+          <strong>Flour(s)</strong>
+          <fieldset>
+              <div id="flour-fieldset">
+                  <div class="flour-record">
+                      <input type="text" class="flour-name" value="AP Flour"><input type="number" class="flour-percent"
+                          min=0 max=100 value=100 step=1>
+                  </div>
+              </div>
+              <button id="add-flour">Add Flour</button>
+              <strong style="color: red;" id="flour-sum-error">WARNING: Sum of all flour ingredients should be
+                  100%</strong>
+          </fieldset>
+  
+          <br>
+          <strong>Liquid(s)</strong>
+  
+          <fieldset>
+              <div id="liquid-fieldset">
+                  <div class="liquid-record">
+                      <input type="text" value="Water" class="liquid-name" readonly><input type="number"
+                          class="liquid-percent" min=0 max=100 value=100 step=1>
+                  </div>
+              </div>
+              <button id="add-liquid">Add Liquid</button>
+              <strong style="color: red;" id="liquid-sum-error">WARNING: Sum of all liquids should be 100%</strong>
+          </fieldset>
+  
+          <br>
+          <strong>Ingredients</strong>
+          <fieldset>
+              <div id="ingredient-fieldset">
+                  <div class="ingredient-record">
+                      <input type="text" value="Salt" class="ingredient-name"><input type="number"
+                          class="ingredient-percent" min=0 max=15 value=2 step=.1>
+                  </div>
+                  <div class="ingredient-record">
+                      <input type="text" value="Yeast" class="ingredient-name"><input type="number"
+                          class="ingredient-percent" min=0 max=100 value=2 step=.1>
+                  </div>
+              </div>
+              <button id="add-ingredient">Add Ingredient</button>
+          </fieldset>
+      </div>
+  </article>
+  
+  <article class="printable" id="final-recipe">
+      <header>
+          <h2>Final Recipe</h2>
+      </header>
+      ....
+  </article>
+    <!-- ./ Calculator Form -->
+  </main>
+  <!-- Dough Calculator Javascript -->
+  <script src="/advanced.js"></script>
+</body>
+
+</html>

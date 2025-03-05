@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light" class=" rvhsxbnp idc0_350">
+<html lang="en">
 
 <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
@@ -11,7 +11,7 @@
   <meta name="description" content="A simple baker's percentage dough calculator.">
 
   <!-- Pico.css -->
-  <link rel="stylesheet" href="/pico.classless.min.css">
+  <link rel="stylesheet" href="/pico.orange.css">
 </head>
 
 <body style="max-width: 70ch; margin: auto;">
@@ -23,9 +23,8 @@
     </hgroup>
     <nav>
       <ul>
-        <li><a href="#" data-theme-switcher="auto">Auto</a></li>
-        <li><a href="#" data-theme-switcher="light">Light</a></li>
-        <li><a href="#" data-theme-switcher="dark">Dark</a></li>
+        <li><a href="/index.html">Basic</a></li>
+        <li><a href="/advanced.html">Advanced</a></li>
       </ul>
     </nav>
   </header>
@@ -34,18 +33,18 @@
   <!-- Main -->
   <main>
     <!-- Calculator Form -->
-    <section id="calculator-form">
+    <section id="calculator-form" style="transform: scale(0.75); transform-origin: top left;">
       <form>
         <table>
           <tr>
             <th>
-              <h2>Ingredient</h2>
+              <strong>Ingredient</strong>
             </th>
             <th>
-              <h2>Baking Percents</h2>
+              <strong>Baking Percents</strong>
             </th>
             <th>
-              <h2>Weights</h2>
+              <strong>Weights</strong>
             </th>
           </tr>
           <tr>
@@ -68,7 +67,7 @@
           </tr>
           <tr>
             <td>
-              <label>Flour 1 %</label>
+              <label>Flour %</label>
             </td>
             <td>
               <input type="number" id="flour_1" min=100 max=100 value=100 step=1 oninput="calc_it()">
@@ -139,7 +138,7 @@
     <!-- ./ Calculator Form -->
   </main>
   <!-- Dough Calculator Javascript -->
-  <script src="/calculator.js"></script>
+  <script src="/basic.js"></script>
 </body>
 
 </html>
